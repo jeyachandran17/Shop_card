@@ -1,0 +1,151 @@
+
+/* --------------------------------------  Nevbar ----------------------------------------------------- */
+
+.heading_page{
+  background-color: rgb(39, 38, 38);
+  height: 250px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.first_head{
+  font-size: 65px;
+  color: white;
+  margin: 0px;
+}
+
+.second_head{
+  margin: 0px;
+  color: gray;
+  font-size: 20px;
+}
+
+
+.main_card{
+  /* margin-top:50px; */
+  height: 450px;
+  width: 300px;
+  display:flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.mainbox{
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shop_card{
+  height: 450px;
+  width: 300px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.pic{
+  height:200px;
+  width:300px;
+  background-color:gray;
+}
+
+.heading, .price, .rating{
+  text-align: center;
+}
+
+.pricecant{
+  height: 100px;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  position:relative;
+  top:50px
+}
+
+.view{
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+/* -------------------------------------------------------  neviBar ----------------------------------------- */
+
+.nev_bar{
+  display: flex;
+  gap: 20px;
+  margin-left: 100px;
+}
+
+.nev_icon{
+  gap: 2px;
+  height: 30px;
+  width: 100px;
+  border-radius:5px;
+  border: 1px solid gray;
+  background-color: white;
+}
+.nev_icon:hover, .view:hover{
+  background-color: black;
+  color: white;
+}
+.card_count{
+  padding: 10px;
+  height: 70px;
+  width: 100px;
+  text-align :center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  position:absolute;
+  right:50px;
+  margin-top: 10px;
+
+}
+
+.count{
+  display: inline-block;
+  text-align: center;
+  background-color: black;
+  color: white;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+
+}
+
+.logo{
+  font-size: 22px;
+  margin-right: 5px;
+}
+
+.nev_bar1,select{
+  margin-top: 10px;
+  background-color: white;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.nev_bar1:hover, select:hover{
+  border: 1px solid gray;
+}
+
+.sale{
+  background-color: black;
+  width: 28px;
+  padding-left: 2px;
+  border-radius: 5px;
+  display: inline-flex;
+  float: right;
+  color: white;
+  position: relative;
+  right: 8px;
+  top:8px;
+}
