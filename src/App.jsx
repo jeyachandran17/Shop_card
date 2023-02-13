@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { Count } from './../../movie_card/src/Count';
+
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { display } from '@mui/system';
 
 export default function App(){
   let source = [
@@ -18,8 +22,9 @@ export default function App(){
         },
     
         {
-            "type":"Sale Item",
-            "price":"$50.00 $25.00",
+            "type": "Sale Item",
+            "unprice":"$50.00",
+            "price":"$25.00",
             "sale":"sale"
         },
     
@@ -30,8 +35,9 @@ export default function App(){
         },
     
             {
-            "type":"Sale Item",
-            "price":"$50.00 $25.00",
+              "type": "Sale Item",
+              "unprice":"$50.00",
+            "price":"$25.00",
             "sale":"sale"
         },
     
@@ -42,6 +48,7 @@ export default function App(){
             {
             "type":"Special Item",
             "stars":"⭐⭐⭐⭐⭐",
+            "unprice":"$20.00",
             "price":"$20.00 $18.00",
             "sale":"sale"
         },
@@ -53,106 +60,84 @@ export default function App(){
         }
     
     ]
+
+    const [ count, setcount] = useState(0);
+
   return(
     <div className="App">
-      <Shaping_card />
-      {/* <Shop_card />
-      <Shop_card />
-      <Shop_card />
-      <Shop_card /> */}
-      <div className="mainbox">
-        {source.map((value)=>(<Shop_card data={value} />))}
+      <div className="nevigation">
+        <NevBar count={count} />
       </div>
-      {/* {source.map((value)=>(<Shop_card data={value} />))} */}
+      <div className="titleCard">
+        <Title />
+      </div>
+      <div className="shopCard">
+        {source.map((value) => (<AddCard data={value} count={ count} setcount={setcount} />))}
+      </div>
+
     </div>
   );
 }
 
-function Shaping_card(){
-  const [cardcount, setcount] = useState(0);
+
+function AddCard({ data, count, setcount }) {
+
+  const [addCard, removeCard] = useState(true)
+
+  const card_type = addCard ? 'Add Card' : 'Remove Card';
+  let addcartCount = addCard ? count+1 : count-1
+
   return(
-    <div className="main">
-      <div className="nev_bar">
-        <p className='logo'>Strat Boostrap</p>
-        <button className='nev_bar1'>Home</button>
-        <button className='nev_bar1'>About</button>
-        <select name="shop" id="">
-          <option value="">Shop</option>
-          <option value="hello">hello</option>
+    <div className="addCard">
+      <div className="card-img">
+        <span className='sale'>{data.sale}</span>
+      </div>
+      <div className="card-priceTag">
+        <p>{data.type}</p>
+        <p>{data.stars}</p>
+        <p><span className='unprice'>{data.unprice} </span>{data.price}</p>
+      </div>
+      <div className="card-btn">
+        <button className='add-btn' onClick={(event) => { removeCard(!addCard); setcount(addcartCount);}}>{ card_type}</button>
+      </div>
+    </div>
+  );
+}
+
+function NevBar({count}){
+  const [show, setshow] = useState(true)
+  
+  const Option = {
+    display: show ?"block": "none",
+  }
+
+  return(
+    <div className="nevigationBar">
+      <div className="nevContainer_1">
+        <p className='logo'>Start Boostrap</p>
+        <button className='nev-btn1'>Home</button>
+        <button className='nev-btn1'>About</button>
+        {/* <button className='nev-btn2' onClick={() => setshow(!show)} >Shop <ArrowDropDownIcon /></button>  */}
+        <select style={Option} className='nev-btn2'>
+          <option>shop</option><br />
+          <option>All Product</option><br/> 
+          <option>Popular Item</option><br/>  
+          <option>New Arrivals</option>
         </select>
-        <div className='card_count'>
-          <button className='nev_icon' onClick={()=>setcount(cardcount+1)} cardCount={()=>setcount(cardcount+1)}>🛒 Cart <span className='count'>{cardcount}</span></button>
-          {/* <p className='count'>0</p> */}
-        </div>
       </div>
-      <div className="heading_page">
-        <p className="first_head">Shop in style</p>
-        <p className="second_head">With this shop homepage template</p>
-      </div>
-      {/* <div className='mainbox'>
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-          <Shop_card />
-      </div> */}
-    </div>
-  );
-}
-
-function Shop_card({data,cardCount}){
-  const [show, setshow] = useState(true);
-  const showCard = {
-      display: show ? 'block' : 'none',
-  };
-
-  return(
-    <div className="mainbox">
-      <div className="shop_card">
-        <div className="pic">
-          <span className='sale'>{data.sale}</span>
-        </div>
-        <div className='pricecant'>
-          <h3 className="heading">{data.type}</h3>
-          <p className="rating">{data.stars}</p>
-          <p className="price"><span>{data.unprice}</span>{data.price}</p>
-        </div>
-
-        <div className="btn">
-          <button onClick={cardCount} /*onClick={() => setshow(!show)}*/ style={showCard} className='view'>Add Cart</button>
-        </div>
+      <div className="nevContainer_2">
+        <p className='count_btn'>🛒Card <p className='count'>{count}</p></p>
       </div>
     </div>
   );
 }
 
-function Nevibar(){
+
+function Title(){
   return(
-    <div className="nev_bar">
-      <p className='logo'>Strat Boostrap</p>
-      <p>Home</p>
-      <p>About</p>
-      <select name="shop" id="">
-        <option value="">Shop</option>
-        <option value="hello">hello</option>
-      </select>
-      <div className='card_count'>
-        <p className='nev_icon'>Cart</p>
-        <p className='count'>0</p>
-      </div>
+    <div className="titleCard">
+      <h1 className='title-txt1'>shop in style</h1>
+      <h5 className='title-txt2'>with this shop homepage template</h5>
     </div>
-  )
+  );
 }
-
-// function Heading(){
-//   return(
-//     <div className="heading_page">
-//       <p className="first_head">Shop in style</p>
-//       <p className="second_head">With this shop homepage template</p>
-//     </div>
-//   );
-// }
-
