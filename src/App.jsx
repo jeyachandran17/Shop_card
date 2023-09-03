@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import { Count } from './../../movie_card/src/Count';
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { display } from '@mui/system';
@@ -74,7 +73,6 @@ export default function App(){
       <div className="shopCard">
         {source.map((value) => (<AddCard data={value} count={ count} setcount={setcount} />))}
       </div>
-
     </div>
   );
 }
@@ -135,7 +133,7 @@ function NevBar({count}){
 
 function Title(){
   return(
-    <div className="titleCard">
+    <div className="title-container">
       <h1 className='title-txt1'>shop in style</h1>
       <h5 className='title-txt2'>with this shop homepage template</h5>
     </div>
