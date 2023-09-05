@@ -1,141 +1,155 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { display } from '@mui/system';
+function App() {
+  return (
+    <div className="App">
+      <Application />
+    </div>
+  )
+}
 
-export default function App(){
+function Application() {
   let source = [
     {
-    "type":"Fancy Product",
-    "price":"$40.00 - $80.00",
+      "type": "Fancy Product",
+      "price": "$40.00 - $80.00",
     },
     
-        {
-            "type":"Special Item",
-            "stars":"⭐⭐⭐⭐⭐",
-            "unprice":"$20.00",
-            "price":"$18.00",
-            "sale":"sale"
-        },
+    {
+      "type": "Special Item",
+      "stars": "⭐⭐⭐⭐⭐",
+      "unprice": "$20.00",
+      "price": "$18.00",
+      "sale": "sale"
+    },
     
-        {
-            "type": "Sale Item",
-            "unprice":"$50.00",
-            "price":"$25.00",
-            "sale":"sale"
-        },
+    {
+      "type": "Sale Item",
+      "unprice": "$50.00",
+      "price": "$25.00",
+      "sale": "sale"
+    },
     
-        {
-            "type":"Popular Item",
-            "stars":"⭐⭐⭐⭐⭐",
-            "price":"$40.00"
-        },
+    {
+      "type": "Popular Item",
+      "stars": "⭐⭐⭐⭐⭐",
+      "price": "$40.00"
+    },
     
-            {
-              "type": "Sale Item",
-              "unprice":"$50.00",
-            "price":"$25.00",
-            "sale":"sale"
-        },
+    {
+      "type": "Sale Item",
+      "unprice": "$50.00",
+      "price": "$25.00",
+      "sale": "sale"
+    },
     
-            {
-            "type":"Fancy Product",
-            "price":"$120.00 - $280.00"
-        },
-            {
-            "type":"Special Item",
-            "stars":"⭐⭐⭐⭐⭐",
-            "unprice":"$20.00",
-            "price":"$20.00 $18.00",
-            "sale":"sale"
-        },
+    {
+      "type": "Fancy Product",
+      "price": "$120.00 - $280.00"
+    },
+    {
+      "type": "Special Item",
+      "stars": "⭐⭐⭐⭐⭐",
+      "unprice": "$20.00",
+      "price": "$20.00 $18.00",
+      "sale": "sale"
+    },
     
-        {
-            "type":"Popular Item",
-            "stars":"⭐⭐⭐⭐⭐",
-            "price":"$40.00"
-        }
+    {
+      "type": "Popular Item",
+      "stars": "⭐⭐⭐⭐⭐",
+      "price": "$40.00"
+    }
     
-    ]
+  ]
 
-    const [ count, setcount] = useState(0);
-
-  return(
-    <div className="App">
-      <div className="nevigation">
-        <NevBar count={count} />
+  let [count,setcount] = useState(0);
+  
+  return (
+    <div className="container">
+      <div className="navigation">
+        <Navigation counting={count} setcount={setcount} />
       </div>
-      <div className="titleCard">
+      <div className="title">
         <Title />
       </div>
-      <div className="shopCard">
-        {source.map((value) => (<AddCard data={value} count={ count} setcount={setcount} />))}
+      <div className="card">
+        <Card source={source} setcount={setcount} counting={count} />
       </div>
     </div>
   );
 }
 
-
-function AddCard({ data, count, setcount }) {
-
-  const [addCard, removeCard] = useState(true)
-
-  const card_type = addCard ? 'Add Card' : 'Remove Card';
-  let addcartCount = addCard ? count+1 : count-1
-
-  return(
-    <div className="addCard">
-      <div className="card-img">
-        <span className='sale'>{data.sale}</span>
-      </div>
-      <div className="card-priceTag">
-        <p>{data.type}</p>
-        <p>{data.stars}</p>
-        <p><span className='unprice'>{data.unprice} </span>{data.price}</p>
-      </div>
-      <div className="card-btn">
-        <button className='add-btn' onClick={(event) => { removeCard(!addCard); setcount(addcartCount);}}>{ card_type}</button>
+function Navigation({ counting, setcount }) {
+  return (
+    <div className="nav-container">
+      <p className='logo'>Start Boostrap</p>
+      <button className='home'>Home</button>
+      <button className='about'>About</button>
+      <select name="" id="option-container">
+        <option value="" defaultChecked>shop</option>
+        <option value="all product">All Product</option>
+        <option value="popular item">Popular Item</option>
+        <option value="new arrivals">New Arrivals</option>
+      </select>
+      <div className='count-card'>
+        <label>🛒Card</label>
+        <label className='counting-part'>{ counting }</label>
       </div>
     </div>
   );
 }
 
-function NevBar({count}){
-  const [show, setshow] = useState(true)
-  
-  const Option = {
-    display: show ?"block": "none",
-  }
-
-  return(
-    <div className="nevigationBar">
-      <div className="nevContainer_1">
-        <p className='logo'>Start Boostrap</p>
-        <button className='nev-btn1'>Home</button>
-        <button className='nev-btn1'>About</button>
-        {/* <button className='nev-btn2' onClick={() => setshow(!show)} >Shop <ArrowDropDownIcon /></button>  */}
-        <select style={Option} className='nev-btn2'>
-          <option>shop</option><br />
-          <option>All Product</option><br/> 
-          <option>Popular Item</option><br/>  
-          <option>New Arrivals</option>
-        </select>
-      </div>
-      <div className="nevContainer_2">
-        <p className='count_btn'>🛒Card <p className='count'>{count}</p></p>
-      </div>
-    </div>
-  );
-}
-
-
-function Title(){
-  return(
+function Title() {
+  return (
     <div className="title-container">
-      <h1 className='title-txt1'>shop in style</h1>
-      <h5 className='title-txt2'>with this shop homepage template</h5>
+      <h1>shop in style</h1>
+      <h5>with this shop homepage template</h5>
     </div>
   );
 }
+
+function Card({source, setcount,counting}) {
+    
+  return (
+    <div className="card-container">
+      {source.map((value) => (<CardDetails source={ value } setcount={setcount} counting={counting} />))}
+    </div>
+  );
+}
+
+function CardDetails({source,counting,setcount}) {
+
+  const [AddToCard,RemoveCard] = useState(true);
+  let card_type = AddToCard ? "Add to Card" : "Remove Card";
+
+  let cartcount = AddToCard ? counting+1 : counting-1;
+
+  return (
+    <div className="cardDetail-container">
+      <div className="image-container">
+        <span className='sale'>{ source.sale }</span>
+      </div>
+      <div className="contant-container">
+        <div className='product-name'>
+          <p>{ source.type }</p>
+        </div>
+        <div className='star-rating'>
+          <p>{ source.stars }</p>
+        </div>
+        <div className='price'>
+          <p className='unprice'>{ source.unprice }</p>
+          <p className='final-price'>{ source.price }</p>
+        </div>
+      </div>
+      <div className="button-container">
+        <button className='add-button' onClick={(event) => { RemoveCard(!AddToCard); setcount(cartcount)}}>{ card_type }</button>
+      </div>
+    </div>
+  );
+}
+
+export default App

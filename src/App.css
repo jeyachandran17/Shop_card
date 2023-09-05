@@ -1,152 +1,147 @@
-.nevigationBar{
+.App {
   display: flex;
-  align-items: center;
-  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.nav-container {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 0px;
-}
-
-.nevContainer_1{
+  padding: 20px;
+  background-color: white;
+  align-items: center;
   gap: 10px;
-  display: flex;
-  margin-left: 10px;
-
 }
 
-.nevContainer_2{
-  margin-right: 10px;
-  align-items: center;
+.logo {
+  font-size: x-large;
+  cursor: pointer;
 }
 
-.logo{
-  font-size: larger;
-  align-items: center;
-  margin-right:10px ;
-}
-
-.nev-btn1{
+.home,
+.about {
+  padding: 10px;
+  font-size: medium;
   background-color: white;
-  border: 0px solid white;
+  border: none;
+  align-items: center;
+  cursor: pointer;
 }
 
-.nev-btn2{
-  margin-top: 5px;
-  height: 45px;
-  background-color: white;
-  border: 1px solid gray;
-  width: 100px;
+#option-container {
+  padding: 10px 0;
   text-align: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
+  font-size: medium;
 }
 
-.count_btn{
-  border: 1px solid gray;
-  height: 35px;
-  width: 90px;
+.count-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:5px;
+  gap: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 3px gray;
+  margin-left: auto;
 }
 
-.count{
+.counting-part {
   background-color: black;
   color: white;
-  height: 18px;
-  width: 18px;
-  border-radius: 50% 50%;
-  text-align: center;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-.titleCard{
-  margin-top: 0px;
-  background-color: black;
-  color: white;
+.title-container {
+  display: flex;
+  flex-direction: column;
   height: 200px;
-  text-align: center;
+  color: whitesmoke;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
 }
 
-.title-txt1{
-  padding-top: 50px;
-  margin-bottom: 0px;
-  font-size: 40px;
-  margin-top: 0px;
+h1 {
+  font-size: xxx-large;
 }
 
-.title-txt2{
-  margin-bottom: 0px;
-  margin-top: 0px;
-  font-size: 15px;
+h5 {
+  font-size: large;
 }
 
-.addCard{
-  height: 400px;
-  width: 300px;
-  border: 1px solid gainsboro;
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  justify-content: center;
+}
+
+.cardDetail-container {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  width: 280px;
+  box-shadow: 0 1px 3px grey;
   border-radius: 5px;
 }
 
-.card-img{
+.image-container {
   height: 180px;
-  width: auto;
-  background-color:gray;
+  background-color: gray;
+  border-radius: 5px 5px 0 0;
 }
 
-.sale{
-  background-color: black;
-  color: white;
-  float: right;
-  margin-right: 5px;
-  margin-top: 5px;
-  border-radius: 3px;
+.sale {
   width: 30px;
   text-align: center;
-}
-
-.card-priceTag{
-  height: 150px;
-  text-align: center;
-}
-
-.unprice{
-  text-decoration-line: line-through;
-}
-
-.card-btn{
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.shopCard{
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 55px;
-  /* background-color: aqua; */
-}
-
-.add-btn{
-  border: 1px solid gray;
-  background-color: white;
-  border-radius: 3px;
-  height: 30px;
-  width: 200px;
-}
-
-.add-btn:hover{
   background-color: black;
   color: white;
+  border-radius: 5px;
+  float: right;
+  margin: 10px;
 }
 
-.card-btn {
+.contant-container {
   display: flex;
-  justify-content: center;
-  position:relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  height: 100px;
+  /* background-color: red; */
 }
 
+.price {
+  display: flex;
+  gap: 10px;
+}
+
+.unprice {
+  text-decoration: line-through;
+}
+
+.button-container {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-button {
+  width: 200px;
+  padding: 10px;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px grey;
+  opacity: 0.8;
+}
+
+.add-button:hover {
+  opacity: 1;
+}
